@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Order Confirmation - E-Commerce Store{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card text-center">
+                <div class="card-body py-5">
+                    <div class="mb-4">
+                        <i class="fas fa-check-circle fa-5x text-success"></i>
+                    </div>
+                    <h2 class="mb-3">Order Confirmed!</h2>
+                    <p class="lead">Thank you for your order. Your order has been placed successfully.</p>
+                    
+                    <div class="card mt-4">
+                        <div class="card-body text-start">
+                            <h5>Order Details</h5>
+                            <hr>
+                            <p><strong>Order ID:</strong> #{{ order.order_id }}</p>
+                            <p><strong>Order Date:</strong> {{ order.order_date.strftime('%B %d, %Y %I:%M %p') }}</p>
+                            <p><strong>Total Amount:</strong> ${{ "%.2f"|format(order.total_amount) }}</p>
+                            <p><strong>Payment Method:</strong> {{ order.payment_method.replace('_', ' ').title() }}</p>
+                            <p><strong>Status:</strong> <span class="badge bg-warning">{{ order.status|title }}</span></p>
+                            <p><strong>Shipping Address:</strong> {{ order.shipping_address }}</p>
+                            <p><strong>Phone:</strong> {{ order.phone }}</p>
+                            
+                            <h6 class="mt-4">Order Items:</h6>
+                            <ul class="list-group">
+                                {% for item in order.order_items %}
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span>{{ item.product.name }} x{{ item.quantity }}</span>
+                                    <span>${{ "%.2f"|format(item.price * item.quantity) }}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <a href="{{ url_for('user.home') }}" class="btn btn-primary">Continue Shopping</a>
+                        <a href="{{ url_for('user.my_orders') }}" class="btn btn-outline-primary">View My Orders</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

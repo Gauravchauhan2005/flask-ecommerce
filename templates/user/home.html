@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}Home - E-Commerce Store{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="hero-section bg-primary text-white py-5 mb-5">
+    <div class="container text-center">
+        <h1 class="display-4">Welcome to E-Commerce Store</h1>
+        <p class="lead">Discover amazing food, beautiful flowers, and unique heritage products</p>
+        <a href="{{ url_for('user.products') }}" class="btn btn-light btn-lg mt-3">Shop Now</a>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Categories Section -->
+    <div class="row mb-5">
+        <div class="col-md-4 mb-4">
+            <div class="card category-card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-utensils fa-3x text-primary mb-3"></i>
+                    <h3>Food</h3>
+                    <p>Delicious meals and snacks delivered fresh to your door</p>
+                    <a href="{{ url_for('user.products', category='food') }}" class="btn btn-primary">Browse Food</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card category-card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-seedling fa-3x text-success mb-3"></i>
+                    <h3>Flowers</h3>
+                    <p>Beautiful bouquets and arrangements for every occasion</p>
+                    <a href="{{ url_for('user.products', category='flowers') }}" class="btn btn-success">Browse Flowers</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card category-card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-gem fa-3x text-warning mb-3"></i>
+                    <h3>Heritage</h3>
+                    <p>Authentic handicrafts and traditional products</p>
+                    <a href="{{ url_for('user.products', category='heritage') }}" class="btn btn-warning">Browse Heritage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Products -->
+    {% if food_products %}
+    <section class="mb-5">
+        <h2 class="mb-4">Featured Food Products</h2>
+        <div class="row">
+            {% for product in food_products %}
+            <div class="col-md-3 mb-4">
+                <div class="card product-card h-100">
+                    {% if product.image %}
+                    <img src="{{ product.image }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text text-muted">${{ "%.2f"|format(product.price) }}</p>
+                        <a href="{{ url_for('user.product_detail', product_id=product.product_id) }}" class="btn btn-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-3">
+            <a href="{{ url_for('user.products', category='food') }}" class="btn btn-outline-primary">View All Food Products</a>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if flower_products %}
+    <section class="mb-5">
+        <h2 class="mb-4">Featured Flower Products</h2>
+        <div class="row">
+            {% for product in flower_products %}
+            <div class="col-md-3 mb-4">
+                <div class="card product-card h-100">
+                    {% if product.image %}
+                    <img src="{{ product.image }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text text-muted">${{ "%.2f"|format(product.price) }}</p>
+                        <a href="{{ url_for('user.product_detail', product_id=product.product_id) }}" class="btn btn-success btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-3">
+            <a href="{{ url_for('user.products', category='flowers') }}" class="btn btn-outline-success">View All Flower Products</a>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if heritage_products %}
+    <section class="mb-5">
+        <h2 class="mb-4">Featured Heritage Products</h2>
+        <div class="row">
+            {% for product in heritage_products %}
+            <div class="col-md-3 mb-4">
+                <div class="card product-card h-100">
+                    {% if product.image %}
+                    <img src="{{ product.image }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text text-muted">${{ "%.2f"|format(product.price) }}</p>
+                        <a href="{{ url_for('user.product_detail', product_id=product.product_id) }}" class="btn btn-warning btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-3">
+            <a href="{{ url_for('user.products', category='heritage') }}" class="btn btn-outline-warning">View All Heritage Products</a>
+        </div>
+    </section>
+    {% endif %}
+</div>
+{% endblock %}
