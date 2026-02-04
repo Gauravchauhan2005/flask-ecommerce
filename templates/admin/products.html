@@ -48,7 +48,7 @@
                         </td>
                         <td>{{ product.name }}</td>
                         <td><span class="badge bg-primary">{{ product.category|title }}</span></td>
-                        <td>${{ "%.2f"|format(product.price) }}</td>
+                        <td>₹{{ "%.2f"|format(product.price) }}</td>
                         <td>{{ product.stock }}</td>
                         <td>
                             <a href="{{ url_for('admin.edit_product', product_id=product.product_id) }}" class="btn btn-sm btn-warning">

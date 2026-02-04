@@ -36,7 +36,7 @@
                     <tr>
                         <td>#{{ order.order_id }}</td>
                         <td>{{ order.user.name }}<br><small class="text-muted">{{ order.user.email }}</small></td>
-                        <td>${{ "%.2f"|format(order.total_amount) }}</td>
+                        <td>₹{{ "%.2f"|format(order.total_amount) }}</td>
                         <td>{{ order.order_date.strftime('%Y-%m-%d %H:%M') }}</td>
                         <td>{{ order.payment_method.replace('_', ' ').title() }}</td>
                         <td>

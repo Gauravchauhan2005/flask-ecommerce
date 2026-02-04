@@ -24,7 +24,7 @@
                 <span class="badge bg-danger">Out of Stock</span>
                 {% endif %}
             </p>
-            <h3 class="text-primary">${{ "%.2f"|format(product.price) }}</h3>
+            <h3 class="text-primary">₹{{ "%.2f"|format(product.price) }}</h3>
             <hr>
             <h5>Description</h5>
             <p>{{ product.description or 'No description available.' }}</p>

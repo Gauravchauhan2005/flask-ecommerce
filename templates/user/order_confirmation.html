@@ -20,7 +20,7 @@
                             <hr>
                             <p><strong>Order ID:</strong> #{{ order.order_id }}</p>
                             <p><strong>Order Date:</strong> {{ order.order_date.strftime('%B %d, %Y %I:%M %p') }}</p>
-                            <p><strong>Total Amount:</strong> ${{ "%.2f"|format(order.total_amount) }}</p>
+                            <p><strong>Total Amount:</strong> ₹{{ "%.2f"|format(order.total_amount) }}</p>
                             <p><strong>Payment Method:</strong> {{ order.payment_method.replace('_', ' ').title() }}</p>
                             <p><strong>Status:</strong> <span class="badge bg-warning">{{ order.status|title }}</span></p>
                             <p><strong>Shipping Address:</strong> {{ order.shipping_address }}</p>
@@ -31,7 +31,7 @@
                                 {% for item in order.order_items %}
                                 <li class="list-group-item d-flex justify-content-between">
                                     <span>{{ item.product.name }} x{{ item.quantity }}</span>
-                                    <span>${{ "%.2f"|format(item.price * item.quantity) }}</span>
+                                    <span>₹{{ "%.2f"|format(item.price * item.quantity) }}</span>
                                 </li>
                                 {% endfor %}
                             </ul>

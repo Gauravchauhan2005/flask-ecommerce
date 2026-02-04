@@ -60,8 +60,10 @@ function updateCartCount(count) {
 }
 
 // Format currency
+const CURRENCY_SYMBOL = "₹";
+
 function formatCurrency(amount) {
-    return '$' + parseFloat(amount).toFixed(2);
+    return CURRENCY_SYMBOL+ parseFloat(amount).toFixed(2);
 }
 
 // Calculate total
@@ -70,7 +72,7 @@ function calculateTotal() {
     let total = 0;
     
     items.forEach(function(item) {
-        const price = parseFloat(item.querySelector('.item-price').textContent.replace('$', ''));
+        const price = parseFloat(item.querySelector('.item-price').textContent.replace( '₹', ''));
         const quantity = parseInt(item.querySelector('.item-quantity').value);
         total += price * quantity;
     });

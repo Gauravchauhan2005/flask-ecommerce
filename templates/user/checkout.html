@@ -54,13 +54,13 @@
                     {% for item in cart_items %}
                     <div class="d-flex justify-content-between mb-2">
                         <span>{{ item.product.name }} x{{ item.quantity }}</span>
-                        <span>${{ "%.2f"|format(item.product.price * item.quantity) }}</span>
+                        <span>₹{{ "%.2f"|format(item.product.price * item.quantity) }}</span>
                     </div>
                     {% endfor %}
                     <hr>
                     <div class="d-flex justify-content-between">
                         <strong>Total:</strong>
-                        <strong class="text-primary">${{ "%.2f"|format(total) }}</strong>
+                        <strong class="text-primary">₹{{ "%.2f"|format(total) }}</strong>
                     </div>
                 </div>
             </div>

@@ -19,7 +19,7 @@
                                 <strong>Date:</strong> {{ order.order_date.strftime('%B %d, %Y %I:%M %p') }}
                             </p>
                             <p class="mb-2">
-                                <strong>Total:</strong> ${{ "%.2f"|format(order.total_amount) }}
+                                <strong>Total:</strong> ₹{{ "%.2f"|format(order.total_amount) }}
                             </p>
                             <p class="mb-2">
                                 <strong>Status:</strong> 
