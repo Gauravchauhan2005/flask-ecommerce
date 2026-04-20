@@ -188,3 +188,87 @@ footer a:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+/* Tower of Hanoi Simulator */
+.hanoi-app-shell {
+    min-height: 420px;
+}
+
+.hanoi-board {
+    background: linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
+}
+
+.hanoi-towers-wrap {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.hanoi-tower {
+    position: relative;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.hanoi-pole {
+    position: absolute;
+    bottom: 34px;
+    width: 10px;
+    height: 220px;
+    border-radius: 12px;
+    background-color: #7286a0;
+}
+
+.hanoi-disks {
+    width: 100%;
+    z-index: 2;
+}
+
+.hanoi-disk-slot {
+    height: 30px;
+}
+
+.hanoi-disk {
+    height: 24px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #0d6efd 0%, #2f86ff 100%);
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 24px;
+    box-shadow: 0 3px 8px rgba(13, 110, 253, 0.25);
+}
+
+.hanoi-base {
+    width: 85%;
+    height: 12px;
+    border-radius: 10px;
+    background-color: #3b4f68;
+    margin-top: 6px;
+}
+
+.hanoi-label {
+    margin-top: 10px;
+    font-weight: 600;
+    color: #2d3e50;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 767.98px) {
+    .hanoi-towers-wrap {
+        grid-template-columns: 1fr;
+    }
+
+    .hanoi-tower {
+        min-height: 240px;
+    }
+
+    .hanoi-pole {
+        height: 150px;
+    }
+}

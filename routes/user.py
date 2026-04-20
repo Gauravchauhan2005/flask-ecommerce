@@ -42,6 +42,12 @@ def products():
     return render_template('user/products.html', products=products, category=category, search=search)
 
 
+@user_bp.route('/hanoi-simulator')
+def hanoi_simulator():
+    """Tower of Hanoi recursion visualizer"""
+    return render_template('user/hanoi.html')
+
+
 @user_bp.route('/product/<int:product_id>')
 def product_detail(product_id):
     """Product detail page"""

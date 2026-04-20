@@ -36,6 +36,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('user.products') }}">All Products</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('user.hanoi_simulator') }}">Hanoi Simulator</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav">
                     {% if current_user.is_authenticated %}
@@ -115,6 +118,7 @@
                         <li><a href="{{ url_for('user.products', category='food') }}" class="text-light">Food</a></li>
                         <li><a href="{{ url_for('user.products', category='flowers') }}" class="text-light">Flowers</a></li>
                         <li><a href="{{ url_for('user.products', category='heritage') }}" class="text-light">Heritage</a></li>
+                        <li><a href="{{ url_for('user.hanoi_simulator') }}" class="text-light">Hanoi Simulator</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">

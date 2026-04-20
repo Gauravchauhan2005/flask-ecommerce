@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Tower of Hanoi Simulator - E-Commerce Store{% endblock %}
+
+{% block content %}
+<section class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                <h1 class="h3 mb-0">Tower of Hanoi Recursion Simulator</h1>
+                <a class="btn btn-outline-primary" href="{{ url_for('user.home') }}">Back to Home</a>
+            </div>
+            <p class="text-muted">
+                Visualize how recursion works by watching the classic Tower of Hanoi algorithm break a big problem into smaller sub-problems.
+            </p>
+            <div id="hanoi-root" class="hanoi-app-shell"></div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="{{ url_for('static', filename='js/hanoi.js') }}"></script>
+{% endblock %}
